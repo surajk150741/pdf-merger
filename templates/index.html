@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Merge PDFs — PDFMerge{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <span class="eyebrow">100% free &middot; No sign-up required</span>
+  <h1>Merge PDF files<br>in seconds.</h1>
+  <p class="hero-sub">Combine multiple PDFs into one clean document. Drag to reorder,
+    drop to add — then download your merged file.</p>
+</section>
+
+<section class="merge-card-wrap">
+  <div class="merge-card">
+
+    <div id="error-banner" class="error-banner hidden" role="alert"></div>
+
+    <div id="dropzone" class="dropzone">
+      <input id="file-input" type="file" accept="application/pdf" multiple hidden>
+      <div class="dropzone-icon">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="44" height="44" rx="14" fill="url(#dzg)"/>
+          <path d="M26 33V19M26 19l-6 6M26 19l6 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M18 35h16" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="dzg" x1="4" y1="4" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#8f7dff"/>
+              <stop offset="1" stop-color="#5a3df0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h3>Drag &amp; drop PDF files here</h3>
+      <p>or</p>
+      <button id="browse-btn" type="button" class="btn btn-primary">Choose files</button>
+      <p class="dropzone-hint">You can select multiple files at once</p>
+    </div>
+
+    <div id="file-list-section" class="file-list-section hidden">
+      <div class="file-list-header">
+        <h4><span id="file-count">0</span> files selected</h4>
+        <button id="add-more-btn" type="button" class="btn btn-outline btn-sm">+ Add more</button>
+      </div>
+
+      <ul id="file-list" class="file-list"></ul>
+
+      <p class="reorder-hint">Drag items to reorder &mdash; they'll be merged top to bottom.</p>
+
+      <div class="merge-actions">
+        <button id="clear-btn" type="button" class="btn btn-ghost">Clear all</button>
+        <button id="merge-btn" type="button" class="btn btn-primary btn-lg" disabled>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 2v9m0 0-3.2-3.2M9 11l3.2-3.2M3 13v1.2A1.8 1.8 0 0 0 4.8 16h8.4A1.8 1.8 0 0 0 15 14.2V13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Merge PDFs
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature">
+    <div class="feature-icon icon-a">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11h14M11 4v14" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+    </div>
+    <h4>Combine anything</h4>
+    <p>Merge as many PDF files as you need into a single, organized document.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon icon-b">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 6h14M4 11h14M4 16h9" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+    </div>
+    <h4>Reorder freely</h4>
+    <p>Drag and drop your files into the exact order you want before merging.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon icon-c">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3a8 8 0 1 0 8 8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M11 3v8h8" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h4>Fast &amp; private</h4>
+    <p>Your files never leave your device longer than needed to process them.</p>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/merge.js') }}"></script>
+{% endblock %}

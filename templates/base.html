@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}PDFMerge — Merge PDFs Online{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><text y=%2218%22 font-size=%2218%22>📄</text></svg>">
+{% block head %}{% endblock %}
+</head>
+<body>
+<div class="bg-decor" aria-hidden="true">
+  <div class="blob blob-a"></div>
+  <div class="blob blob-b"></div>
+</div>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="{{ url_for('index') }}">
+      <span class="brand-mark">
+        <svg viewBox="0 0 32 32" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="2" width="14" height="20" rx="2.5" fill="#fff" fill-opacity="0.92"/>
+          <path d="M13 2v5a2 2 0 0 0 2 2h5" stroke="#6d5bff" stroke-width="1.6" stroke-linejoin="round" fill="none"/>
+          <rect x="11" y="12" width="18" height="15" rx="2.5" fill="url(#g1)"/>
+          <path d="M16 19.5h8M16 23h5.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="g1" x1="11" y1="12" x2="29" y2="27" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#7c6bff"/>
+              <stop offset="1" stop-color="#5a3df0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      <span class="brand-name">PDF<span class="brand-accent">Merge</span></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="{{ url_for('index') }}" class="nav-link {% if active_page == 'merge' %}active{% endif %}">
+        Merge
+      </a>
+      <a href="#" class="nav-link disabled" aria-disabled="true" title="Coming soon">
+        Split <span class="soon-pill">Soon</span>
+      </a>
+      <a href="#" class="nav-link disabled" aria-disabled="true" title="Coming soon">
+        Compress <span class="soon-pill">Soon</span>
+      </a>
+      <a href="#" class="nav-link disabled" aria-disabled="true" title="Coming soon">
+        Convert <span class="soon-pill">Soon</span>
+      </a>
+    </nav>
+
+    <div class="navbar-actions">
+      <button class="btn btn-ghost" type="button">Sign in</button>
+      <button class="btn btn-primary" type="button">Get started</button>
+      <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="nav-links-mobile" aria-label="Primary mobile">
+    <a href="{{ url_for('index') }}" class="nav-link {% if active_page == 'merge' %}active{% endif %}">Merge</a>
+    <a href="#" class="nav-link disabled" aria-disabled="true">Split <span class="soon-pill">Soon</span></a>
+    <a href="#" class="nav-link disabled" aria-disabled="true">Compress <span class="soon-pill">Soon</span></a>
+    <a href="#" class="nav-link disabled" aria-disabled="true">Convert <span class="soon-pill">Soon</span></a>
+  </nav>
+</header>
+
+<main>
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark small">
+        <svg viewBox="0 0 32 32" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="11" y="12" width="18" height="15" rx="2.5" fill="#8a7bff"/>
+          <path d="M16 19.5h8M16 23h5.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+          <rect x="3" y="2" width="14" height="20" rx="2.5" fill="#e7e3ff"/>
+        </svg>
+      </span>
+      <span>PDFMerge</span>
+    </div>
+    <p class="footer-note">Built with Flask. Your files stay on your machine.</p>
+    <p class="footer-copy">&copy; 2026 PDFMerge. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>
