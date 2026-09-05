@@ -7,4 +7,5 @@ output/*
 !uploads/.gitkeep
 !output/.gitkeep
 .env
-.claude/
+.claude/*
+!.claude/agents/
